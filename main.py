@@ -92,7 +92,8 @@ while running:
     # Calculate angles
     teta1, teta2 = calculate_angles(target_x, target_y, l1, l2)
     teta3, teta4 = calculate_angles(target_x, target_y, l1, l2)
-    teta3 = -teta3
+    if teta3 is not 0:
+        teta3 = -teta3
 
     # preenche o Ecran
     Ecran.fill(BLACK)
