@@ -4,7 +4,7 @@ import math
 def clamp(value, min_value, max_value):
     return max(min_value, min(value, max_value))
 
-'''def calculate_angles(x, y, l1, l2):
+def calculate_angles(x, y, l1, l2):
     sqrt = math.sqrt
     acos = math.acos
     atan2 = math.atan2
@@ -36,34 +36,4 @@ def clamp(value, min_value, max_value):
     beta = acos(clamp((l1**2 + d**2 - l2**2) / (2 * l1 * d), -1, 1))
     teta1 = degrees(alpha - beta)
     
-    return teta1, teta2 '''
-
-def calculate_angles(x, y, l1, l2):
-    sqrt = math.sqrt
-    acos = math.acos
-    atan2 = math.atan2
-    degrees = math.degrees
-
-    d = sqrt(x**2 + y**2)
-
-    if d > (l1 + l2):
-        scale = (l1 + l2) / d
-        x *= scale
-        y *= scale
-        d = l1 + l2
-
-    cos_theta2 = clamp((x**2 + y**2 - l1**2 - l2**2) / (2 * l1 * l2), -1, 1)
-
-    try:
-        theta2 = degrees(acos(cos_theta2))
-    except ValueError:
-        return None, None
-
-    if d == 0:
-        return None, None
-
-    alpha = atan2(y, x)
-    beta = acos(clamp((l1**2 + d**2 - l2**2) / (2 * l1 * d), -1, 1))
-    theta1 = degrees(alpha - beta)  # elbow down configuration
-
-    return theta1, theta2
+    return teta1, teta2 
